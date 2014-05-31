@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class AddNewUser extends HttpServlet {
 			String address = request.getParameter("address");
 			String phoneNumber = request.getParameter("phoneNumber");
 			String education = request.getParameter("education");
-			//User newUser = AccountCheck.addNewUser(name, address, phoneNumber, education);
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("name",name);
 			session.setAttribute("address",address);
@@ -45,12 +46,18 @@ public class AddNewUser extends HttpServlet {
 			// forward到userInfoPage
 			jspPageToForward = "addUserPage2.jsp";
 		}
-		// 若Client端是第一次呼叫此Servlet程式, 準備填寫資料
 		else if ("重設".equals(page)) {
 			// forward到新增使用者的第1頁
 			jspPageToForward = "addUserPage.jsp";
 		}
-
+		else if ("送出".equals(page)){
+			String user = request.getParameter("user");
+			String pwd = request.getParameter("pwd");
+			HttpSession session = request.getSession();
+			// hashmap還沒寫
+			User newUser = AccountCheck.addNewUser(session.getAttribute("name"), session.getAttribute("address"), 
+					session.getAttribute("phoneNumber"), session.getAttribute("education"), user, pwd, hashmap);
+		}
 		
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher(jspPageToForward);
