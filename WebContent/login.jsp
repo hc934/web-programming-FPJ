@@ -11,10 +11,13 @@
 		<p>
 			<strong>歡迎來到105人力公司，請輸入您的資料來登入</strong>
 		</p>
+		<p style="color:red">
+			<strong>${message}</strong>
+		</p>
 		<form action="Login" method="post" >
 			名稱:<input type="text" name="user" id="user"><br>
 			密碼:<input type="password" name="pwd" id="pwd"><br><br>
-			自動登入:<input type="checkbox" name="auto" value="自動登入">
+			自動登入:<input type="checkbox" name="auto" value="勾選">
 			<a href="addUserPage.jsp">新使用者?</a>
 		<input type="submit" name="submit" value="送出">
 		</form>

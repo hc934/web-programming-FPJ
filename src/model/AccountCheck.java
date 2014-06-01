@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import javax.servlet.ServletContext;
 
 import model.User;
 
@@ -20,7 +21,7 @@ public class AccountCheck {
 	 *            所以用HashMap資料結構來暫存. 但一旦Web Application重新啟動或關閉, 使用者物件都會遺失.
 	 * @return true(代表使用者名稱已經存在)或false(代表此使用者名稱沒有被使用)
 	 */
-	public boolean checkAccountNameExistence(String inputAccountName,
+	public static boolean checkAccountNameExistence(String inputAccountName,
 			HashMap<String, User> hashMap) {
 
 		// 此hashMap物件為空值
@@ -47,7 +48,7 @@ public class AccountCheck {
 	 *            所以用HashMap資料結構來暫存. 但一旦Web Application重新啟動或關閉, 使用者資料都會遺失.
 	 * @return true(代表密碼正確)或false(代表密碼不正確)
 	 */
-	public boolean checkPassword(String inputAccountName, String inputPassword,
+	public static boolean checkPassword(String inputAccountName, String inputPassword,
 			HashMap<String, User> hashMap) {
 
 		// 此hashMap物件為空值
@@ -87,10 +88,10 @@ public class AccountCheck {
 	 *            所以用HashMap資料結構來暫存. 但一旦Web Application重新啟動或關閉, 使用者物件都會遺失.
 	 * @return 傳回一個User物件
 	 */
-	public User addNewUser(String name, String address,
+	public static User addNewUser(String name, String address,
 			String phoneNumber, String education, String accountName,
 			String password, HashMap<String, User> hashMap) {
-
+		
 		User user = new User();
 		user.setName(name);
 		user.setAddress(address);
@@ -100,6 +101,9 @@ public class AccountCheck {
 		user.setPassword(password);
 
 		hashMap.put(accountName, user);
+		
+		//ServletContext context = getServletContext();
+		//context.setAttribute("newUser", newUser);
 		
 		//回傳User物件
 		return user;

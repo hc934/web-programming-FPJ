@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
 
 import model.AccountCheck;
 import model.User;
@@ -17,7 +18,7 @@ import model.User;
 /**
  * 這支Servlet程式扮演Controller的角色
  */
-@WebServlet("/AddNewUser")
+@WebServlet("/")
 public class AddNewUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,19 +47,26 @@ public class AddNewUser extends HttpServlet {
 			// forward到userInfoPage
 			jspPageToForward = "addUserPage2.jsp";
 		}
-		else if ("重設".equals(page)) {
-			// forward到新增使用者的第1頁
+		else if ("送出".equals(page)){
+			String accountName = request.getParameter("accountName");
+			String password = request.getParameter("password");
+			HttpSession session = request.getSession();
+			String name = (String)session.getAttribute("name");
+			String address = (String)session.getAttribute("address");
+			String phoneNumber = (String)session.getAttribute("phoneNumber");
+			String education = (String)session.getAttribute("education");			
+			//ServletContext context = getServletContext();
+			HashMap <String , User> hashMap = (HashMap <String, User>) this.getServletConfig().getServletContext().getAttribute("hashMap");
+			
+			User newUser = AccountCheck.addNewUser(name,address,phoneNumber,education,accountName,password,hashMap);
+			request.setAttribute("user",newUser);
+			//context.setAttribute("newUser", newUser);
+			
+			jspPageToForward = "userInfoPage.jsp";
+		}
+		else{
 			jspPageToForward = "addUserPage.jsp";
 		}
-		else if ("送出".equals(page)){
-			String user = request.getParameter("user");
-			String pwd = request.getParameter("pwd");
-			HttpSession session = request.getSession();
-			// hashmap還沒寫
-			User newUser = AccountCheck.addNewUser(session.getAttribute("name"), session.getAttribute("address"), 
-					session.getAttribute("phoneNumber"), session.getAttribute("education"), user, pwd, hashmap);
-		}
-		
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher(jspPageToForward);
 		dispatcher.forward(request, response);

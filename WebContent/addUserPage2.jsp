@@ -16,13 +16,13 @@
 				<tr>
 					<td width="150"><div align="left">新增帳戶名稱:</div></td>
 					<td width="450"><div align="left">
-							<input name="user" type="text" id="user">
+							<input name="accountName" type="text" id="accountName">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div align="left">新增帳戶密碼:</div></td>
 					<td><div align="left">
-							<input name="pwd" type="password" id="pwd">
+							<input name="password" type="password" id="password">
 						</div></td>
 				</tr>
 			</table>
