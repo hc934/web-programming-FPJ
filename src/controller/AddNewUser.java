@@ -18,7 +18,7 @@ import model.User;
 /**
  * 這支Servlet程式扮演Controller的角色
  */
-@WebServlet("/")
+@WebServlet("/AddNewUser")
 public class AddNewUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

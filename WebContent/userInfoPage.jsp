@@ -44,7 +44,7 @@
 			</tr>
 		</table>
 		<p>
-			<label> <a href='AddNewUser'>請回到首頁進行登入動作!</a>
+			<label> <a href='Login'>請回到首頁進行登入動作!</a>
 			</label>
 		</p>
 	</div>

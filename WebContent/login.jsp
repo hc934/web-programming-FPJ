@@ -9,9 +9,7 @@
 <body>
 	<div>
 		<p>
-			<strong>歡迎來到105人力公司，請輸入您的資料來登入</strong>
-		</p>
-		<p style="color:red">
+			<strong>歡迎來到105人力公司，請輸入您的資料來登入</strong><br>
 			<strong>${message}</strong>
 		</p>
 		<form action="Login" method="post" >
