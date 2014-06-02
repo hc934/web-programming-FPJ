@@ -9,7 +9,8 @@
 <body>
 	<div>
 		<p>
-			<strong>歡迎使用105人力公司網站來登錄您的個人資料 -Page 2</strong>
+			<strong>歡迎使用105人力公司網站來登錄您的個人資料 -Page 2</strong><br>
+			<strong style="color :red ">${message}</strong>
 		</p>
 		<form name="form2" method="post" action="AddNewUser">
 			<table width="600" border="0">

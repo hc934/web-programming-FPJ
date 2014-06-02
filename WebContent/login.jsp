@@ -10,7 +10,7 @@
 	<div>
 		<p>
 			<strong>歡迎來到105人力公司，請輸入您的資料來登入</strong><br>
-			<strong>${message}</strong>
+			<strong style="color :red ">${message}</strong>
 		</p>
 		<form action="Login" method="post" >
 			名稱:<input type="text" name="accountName" id="accountName"><br>
