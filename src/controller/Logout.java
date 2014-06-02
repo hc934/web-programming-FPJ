@@ -43,6 +43,7 @@ public class Logout extends HttpServlet {
 				}
 			}
 		}
+		System.out.println("logout");
 		String jspPageToForward = "login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(jspPageToForward);
 		dispatcher.forward(request, response);

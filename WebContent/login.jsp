@@ -13,9 +13,9 @@
 			<strong>${message}</strong>
 		</p>
 		<form action="Login" method="post" >
-			名稱:<input type="text" name="user" id="user"><br>
-			密碼:<input type="password" name="pwd" id="pwd"><br><br>
-			自動登入:<input type="checkbox" name="auto" value="勾選">
+			名稱:<input type="text" name="accountName" id="accountName"><br>
+			密碼:<input type="password" name="password" id="passwordd"><br><br>
+			自動登入:<input type="checkbox" name="auto" value="checked">
 			<a href="addUserPage.jsp">新使用者?</a>
 		<input type="submit" name="submit" value="送出">
 		</form>

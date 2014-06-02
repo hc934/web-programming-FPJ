@@ -27,6 +27,7 @@ public class AddNewUser extends HttpServlet {
 		String jspPageToForward = null;
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		
 		// 取得submit參數
 		String page = request.getParameter("submit");
@@ -38,7 +39,7 @@ public class AddNewUser extends HttpServlet {
 			String phoneNumber = request.getParameter("phoneNumber");
 			String education = request.getParameter("education");
 			
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
 			session.setAttribute("name",name);
 			session.setAttribute("address",address);
 			session.setAttribute("phoneNumber",phoneNumber);
@@ -48,21 +49,34 @@ public class AddNewUser extends HttpServlet {
 			jspPageToForward = "addUserPage2.jsp";
 		}
 		else if ("送出".equals(page)){
-			String accountName = request.getParameter("accountName");
-			String password = request.getParameter("password");
-			HttpSession session = request.getSession();
-			String name = (String)session.getAttribute("name");
-			String address = (String)session.getAttribute("address");
-			String phoneNumber = (String)session.getAttribute("phoneNumber");
-			String education = (String)session.getAttribute("education");			
-			//ServletContext context = getServletContext();
 			HashMap <String , User> hashMap = (HashMap <String, User>) this.getServletConfig().getServletContext().getAttribute("hashMap");
-			
-			User newUser = AccountCheck.addNewUser(name,address,phoneNumber,education,accountName,password,hashMap);
-			request.setAttribute("user",newUser);
-			//context.setAttribute("newUser", newUser);
-			
-			jspPageToForward = "userInfoPage.jsp";
+			String accountName = request.getParameter("accountName");
+			if (AccountCheck.checkAccountNameExistence(accountName, hashMap)==true){
+				String message = "所輸入的帳戶名稱已經有人使用，請輸入另一個帳戶名稱!";
+				request.setAttribute("message", message);
+				jspPageToForward = "addUserPage2.jsp";
+			}
+			else{
+				String password = request.getParameter("password");
+				//HttpSession session = request.getSession();
+				String name = (String)session.getAttribute("name");
+				String address = (String)session.getAttribute("address");
+				String phoneNumber = (String)session.getAttribute("phoneNumber");
+				String education = (String)session.getAttribute("education");
+				
+				//System.out.println(name);
+				//System.out.println(address);
+				//System.out.println(accountName);
+				
+				User newUser = AccountCheck.addNewUser(name,address,phoneNumber,education,accountName,password,hashMap);
+				request.setAttribute("user",newUser);
+				//System.out.println(hashMap.get(accountName).getName());
+				
+				//System.out.println(newUser.getName());
+				
+				jspPageToForward = "userInfoPage.jsp";
+			}
+			session.invalidate();
 		}
 		else{
 			jspPageToForward = "addUserPage.jsp";

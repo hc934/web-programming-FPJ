@@ -20,27 +20,27 @@
 		<table width="600" border="0">
 			<tr>
 				<td width="100"><div align="left">帳戶名稱:</div></td>
-				<td width="500"><div align="left">${newUser.accountName}</div></td>
+				<td width="500"><div align="left">${param.accountName}</div></td>
 			</tr>
 			<tr>
 				<td width="100"><div align="left">帳戶密碼:</div></td>
-				<td width="500"><div align="left">${newUser.password}</div></td>
+				<td width="500"><div align="left">${param.password}</div></td>
 			</tr>
 			<tr>
 				<td width="100"><div align="left">姓名:</div></td>
-				<td width="500"><div align="left">${newUser.name}</div></td>
+				<td width="500"><div align="left">${user.name}</div></td>
 			</tr>
 			<tr>
 				<td><div align="left">住址:</div></td>
-				<td><div align="left">${newUser.address}</div></td>
+				<td><div align="left">${user.address}</div></td>
 			</tr>
 			<tr>
 				<td><div align="left">電話:</div></td>
-				<td><div align="left">${newUser.phoneNumber}</div></td>
+				<td><div align="left">${user.phoneNumber}</div></td>
 			</tr>
 			<tr>
 				<td><div align="left">學歷:</div></td>
-				<td><div align="left">${newUser.education}</div></td>
+				<td><div align="left">${user.education}</div></td>
 			</tr>
 		</table>
 		<p>
